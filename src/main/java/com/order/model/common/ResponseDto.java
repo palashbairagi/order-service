@@ -3,6 +3,7 @@ package com.order.model.common;
 import com.order.enums.ResponseStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Arrays;
@@ -11,6 +12,7 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class ResponseDto<T> extends Dto {
 
     private ResponseStatus status;

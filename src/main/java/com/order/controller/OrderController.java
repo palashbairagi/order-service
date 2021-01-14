@@ -1,24 +1,27 @@
 package com.order.controller;
 
-import com.order.enums.ErrorCode;
-import com.order.exception.OrderException;
 import com.order.model.common.ResponseDto;
+import com.order.model.dto.OrderDto;
+import com.order.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/order")
+@RequestMapping("/v1")
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class OrderController {
 
-    @GetMapping
-    public ResponseDto getOrder() {
+    private final OrderService orderService;
 
-        throw new OrderException(ErrorCode.GENERAL_INPUT_ERROR);
-
+    @PostMapping("/order")
+    public ResponseEntity<ResponseDto<OrderDto>> createOrder(@RequestBody OrderDto orderRequestDto) {
+        return new ResponseEntity<>(ResponseDto.forSuccess(orderService.createOrder(orderRequestDto)), HttpStatus.OK);
     }
 
 }
