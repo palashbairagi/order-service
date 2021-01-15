@@ -6,8 +6,8 @@ import com.order.enums.ShippingMethod;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = Constants.TBL_ORDER_INFO)
@@ -46,7 +46,7 @@ public class Order extends Auditable<String> {
     @JoinTable(name = Constants.TBL_ORDER_ITEMS_INFO,
             joinColumns = { @JoinColumn(name = "order_id") },
             inverseJoinColumns = { @JoinColumn(name = "item_id") })
-    private Set<Item> items = new HashSet<>();
+    private List<Item> items = new ArrayList<>();
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")

@@ -16,7 +16,7 @@ public class PaymentServiceProperties {
 
     private PaymentServiceProperties.Endpoints endpoints;
 
-    public URI addPayment() {
+    public URI paymentUri() {
         return UriComponentsBuilder
                 .fromUriString(this.getHost())
                 .path(this.getEndpoints().getPayment())

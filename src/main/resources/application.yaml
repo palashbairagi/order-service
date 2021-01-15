@@ -18,4 +18,4 @@ services:
   payment-service:
     host: http://localhost:9090
     endpoints:
-      payment: /api/v1/payment
+      payment: /api/v1/payment/

@@ -1,17 +1,26 @@
 package com.order.model.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.order.enums.OrderStatus;
 import com.order.model.common.Dto;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.Set;
+import java.util.List;
 
-@Data
+@Setter
+@Getter
 public class OrderDto extends Dto {
+
+    private Long orderId;
 
     private Long customerId;
 
-    private Set<Item> items;
+    private OrderStatus status = OrderStatus.PENDING;
+
+    private List<Item> items;
 
     private Double subTotal;
 
@@ -25,9 +34,10 @@ public class OrderDto extends Dto {
 
     private ShippingAddress shippingAddress;
 
-    private Set<Payment> payments;
+    private List<Payment> payments;
 
-    @Data
+    @Setter
+    @Getter
     public static class Item extends Dto {
 
         private Long itemId;
@@ -36,7 +46,8 @@ public class OrderDto extends Dto {
 
     }
 
-    @Data
+    @Setter
+    @Getter
     public static class ShippingAddress extends Dto {
 
         private Long addressId;
@@ -53,7 +64,8 @@ public class OrderDto extends Dto {
 
     }
 
-    @Data
+    @Setter
+    @Getter
     public static class Payment extends Dto {
 
         private Long confirmationNumber;
@@ -70,7 +82,8 @@ public class OrderDto extends Dto {
 
         private BillingAddress billingAddress;
 
-        @Data
+        @Setter
+        @Getter
         public static class BillingAddress extends Dto {
 
             private Long addressId;
